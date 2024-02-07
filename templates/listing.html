@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mx-auto mt-8">
+    <div class="bg-white rounded-lg overflow-hidden shadow-md p-6">
+        <h1 class="text-4xl text-gray-900 mb-4">{{ listing.title }}</h1>
+        <p class="text-xl text-gray-900">${{ listing.price }}</p>
+        <p class="text-gray-600 mb-4">{{ listing.address }}</p>
+
+        {% if request.user.is_staff %}
+        <div class="flex items-center mt-5">
+            <a href="/listings/{{ listing.id }}/edit/"
+                class="text-white bg-blue-500 py-2 px-4 rounded-full hover:bg-blue-600">
+                Edit
+            </a>
+            <a href="/listings/{{ listing.id }}/delete/"
+                class="ml-3 text-white bg-red-500 py-2 px-4 rounded-full hover:bg-red-600">
+                Delete
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
